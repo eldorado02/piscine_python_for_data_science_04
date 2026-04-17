@@ -1,38 +1,51 @@
 #!/usr/bin/env python3
 
 def mean(value: list[int]) -> None:
-    if (len(list) == 0):
+    if (len(value) == 0):
         print("ERROR")
-    print(f"mean : {sum(value) / len(value):.1f}")
+        return
+    print(f"mean : {sum(value) / len(value)}")
     
 def median(value: list[int]) -> None:
-    if (len(list) == 0):
+    if (len(value) == 0):
         print("ERROR")
-    print(f"median : {value[len(list) // 2]}")
+        return
+    print(f"median : {value[len(value) // 2]}")
     
 def quartile(value: list[int]) -> None:
-    if (len(list) == 0):
+    if (len(value) == 0):
         print("ERROR")
-    res : list[int] = [value[int(round(len(value) * 0.25)), int(round(len(value) * 0.25))]]
+        return
+    res : list[int] = [value[int(len(value) * 0.25)], value[int(len(value) * 0.75)]]
     print(f"quartile : {res}")
     
 def var(value: list[int]) -> None:
-    
+    if (len(value) == 0):
+        print("ERROR")
+        return
+    mean = sum(value) / len(value)
+    var = sum((x - mean)**2 for x in value) / len(value)
+    print(f"var : {var}")
     
 def std(value: list[int]) -> None:
+    if (len(value) == 0):
+        print("ERROR")
+        return
     mean = sum(value) / len(value)
-    var = sum((x - mean)**2 x for x in value) / n
+    var = sum((x - mean)**2 for x in value) / len(value)
+    std = var ** 0.5
+    print(f"std : {std}")
     
 
 
-def ft_statistics(*args: Any, **kwargs: Any) -> None:
+def ft_statistics(*args: any, **kwargs: any) -> None:
     """Create stat of args up to the demand in kwargs"""
     value = list(args)
     actions = kwargs.values()
     track = {"mean": False, "median" : False, "quartile" : False,
             "std": False, "var" : False}
     try:
-        assert all(isininstance(x, int) for x in value), "All Value Args must be int"
+        assert all(isinstance(x, int) for x in value), "All Value Args must be int"
         assert all(isinstance(x, str) for x in actions), "All param of Kwargs must be str"
     except AssertionError as excp:
         print(f"{type(excp).__name__}: {excp}")
