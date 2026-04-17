@@ -1,4 +1,57 @@
 #!/usr/bin/env python3
 
+def mean(value: list[int]) -> None:
+    if (len(list) == 0):
+        print("ERROR")
+    print(f"mean : {sum(value) / len(value):.1f}")
+    
+def median(value: list[int]) -> None:
+    if (len(list) == 0):
+        print("ERROR")
+    print(f"median : {value[len(list) // 2]}")
+    
+def quartile(value: list[int]) -> None:
+    if (len(list) == 0):
+        print("ERROR")
+    res : list[int] = [value[int(round(len(value) * 0.25)), int(round(len(value) * 0.25))]]
+    print(f"quartile : {res}")
+    
+def var(value: list[int]) -> None:
+    
+    
+def std(value: list[int]) -> None:
+    mean = sum(value) / len(value)
+    var = sum(  )
+
+
 def ft_statistics(*args: Any, **kwargs: Any) -> None:
-    #your code here
+    """Create stat of args up to the demand in kwargs"""
+    value = list(args)
+    actions = kwargs.values()
+    track = {"mean": False, "median" : False, "quartile" : False,
+            "std": False, "var" : False}
+    try:
+        assert all(isininstance(x, int) for x in value), "All Value Args must be int"
+        assert all(isinstance(x, str) for x in actions), "All param of Kwargs must be str"
+    except AssertionError as excp:
+        print(f"{type(excp).__name__}: {excp}")
+        return None
+    value = sorted(value)
+    for act in actions:
+        if act == "mean" and track["mean"] == False:
+            mean(value)
+            track["mean"] = True
+        elif act == "median":
+            median(value)
+            track["median"] = True
+        elif act == "quartile":
+            quartile(value)
+            track["quartile"] = True
+        elif act == "std":
+            std(value)
+            track["std"] = True
+        elif act == "var":
+            var(value)
+            track["var"] = True
+        
+    
