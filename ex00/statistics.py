@@ -21,7 +21,8 @@ def var(value: list[int]) -> None:
     
 def std(value: list[int]) -> None:
     mean = sum(value) / len(value)
-    var = sum(  )
+    var = sum((x - mean)**2 x for x in value) / n
+    
 
 
 def ft_statistics(*args: Any, **kwargs: Any) -> None:
