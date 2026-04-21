@@ -2,6 +2,7 @@
 
 
 def mean(value: list[int]) -> None:
+    """Mean of the list value"""
     if len(value) == 0:
         print("ERROR")
         return
@@ -9,6 +10,7 @@ def mean(value: list[int]) -> None:
 
 
 def median(value: list[int]) -> None:
+    """Median of the list value"""
     if len(value) == 0:
         print("ERROR")
         return
@@ -16,6 +18,7 @@ def median(value: list[int]) -> None:
 
 
 def quartile(value: list[int]) -> None:
+    """Quartile [25%, 75%] of the list"""
     if len(value) == 0:
         print("ERROR")
         return
